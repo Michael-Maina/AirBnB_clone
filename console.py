@@ -24,13 +24,6 @@ def type_parser(arg):
     return arg
 
 
-def dict_parser(arg):
-    """
-    Checks if argument passed to update method is a dictionary
-    """
-    ;
-
-
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class for AirBnB program"""
 
@@ -68,3 +61,36 @@ class HBNBCommand(cmd.Cmd):
                     return method_dict[cmd_list[0]](arguments)
         print("*** Unknown syntax: {}".format(arg))
         return False
+
+    def do_emptyline(self):
+        """Executes nothing when no command is passed to the interpreter"""
+        pass
+
+    def do_EOF(self, arg):
+        """EOF(end_of_file) command to exit the interpreter"""
+        print()
+        return True
+
+    def do_quit(self, arg):
+        """Quit command to exit the interpreter"""
+        return True
+
+    def do_create(self, arg):
+        """
+        Creates a new instance of a class, saves it and prints the id
+        """
+        line = arg.split()
+        if len(line) == 0:
+            print("** class name missing **")
+        else:
+            if not line[0] in self.__classes:
+                print("** class doesn't exist **")
+            else:
+                new_inst = eval(line[0])()
+                new_inst.save()
+                print("{}".format(new_inst.id))
+
+    def help_create(self):
+        """Help output for the create command"""
+        print("Creates a new instance of a class, saves it and prints the id")
+        print()
