@@ -94,3 +94,59 @@ class HBNBCommand(cmd.Cmd):
         """Help output for the create command"""
         print("Creates a new instance of a class, saves it and prints the id")
         print()
+
+    def do_show(self, arg):
+        """
+        Prints string representation of an instance based on class name and id
+        """
+        line = arg.split()
+        line = parser(line)
+        if len(line) == 0:
+            print("** class name missing **")
+        else:
+            if not line[0] in self.__classes:
+                print("** class doesn't exist **")
+            elif len(line) == 1:
+                print("** instance id missing **")
+            else:
+                search_key = line[0] + "." + line[1]
+                check = False
+                for key, value in storage.all().items():
+                    if search_key == key:
+                        check = True
+                        print(value)
+                        break
+                if not check:
+                    print("** no instance found **")
+
+    def help_show(self):
+        """Help output for the show command"""
+        print("Prints string representation of an instance\
+        based on class name and id")
+        print()
+
+    def do_all(self, arg):
+        """
+        Prints all string representation of all instances
+        based/not on the class name
+        """
+        line = arg.split()
+        inst_list = []
+        if len(line) == 0:
+            for key, value in storage.all().items():
+                inst_list.append(value.__str__())
+            print(inst_list)
+        elif not line[0] in self.__classes:
+            print("** class doesn't exist **")
+        else:
+            for key, value in storage.all().items():
+                cls_name = key.split(".")
+                if cls_name[0] == line[0]:
+                    inst_list.append(value.__str__())
+            print(inst_list)
+
+    def help_all(self):
+        """Help output for the all command"""
+        print("Prints all string representation of all instances\
+        based/not on the class name")
+        print()
