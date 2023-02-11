@@ -34,7 +34,7 @@ This command line interpreter can:
 At first, you have to clone this repository in your machine using this command:
 
 ```bash
-$ git clone https://github.com/santiagopemo/AirBnB_clone.git
+$ git clone https://github.com/Gatwan/AirBnB_clone.git
 ```
 
 Then, go inside it:
