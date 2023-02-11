@@ -13,13 +13,22 @@ from models.place import Place
 from models.review import Review
 
 
+def isfloat(arg):
+    """Checks if argument is a float data type variable"""
+    try:
+        float(arg)
+        return True
+    except ValueError:
+        return False
+
+
 def type_parser(arg):
     """Check data type of arg and cast it"""
     if arg.isalpha():
         pass
     elif arg.isdigit():
         arg = int(arg)
-    else:
+    elif isfloat(arg):
         arg = float(arg)
     return arg
 
