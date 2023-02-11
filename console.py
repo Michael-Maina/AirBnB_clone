@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         print()
 
     def do_EOF(self, arg):
-        """EOF(end_of_file) command to exit the interpreter"""
+        """EOF(end_of_file) command to exit the program"""
         print()
         return True
 
@@ -88,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
         print()
 
     def do_quit(self, arg):
-        """Quit command to exit the interpreter"""
+        """Quit command to exit the program"""
         return True
 
     def help_quit(self):
