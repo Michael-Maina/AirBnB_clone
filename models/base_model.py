@@ -31,7 +31,7 @@ class BaseModel:
         [<class name>] (<self.id>) <self.__dict__>
         """
         return "[{}] ({}) {}".format(self__class__.__name__,
-                                    self.id, self.__dict__)
+                                     self.id, self.__dict__)
 
     def to_dict(self):
         """
