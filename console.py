@@ -2,6 +2,7 @@
 """Entry point for the command interpreter """
 import cmd
 import re
+import models
 from models.__init__ import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -62,14 +63,29 @@ class HBNBCommand(cmd.Cmd):
         """Executes nothing when no command is passed to the interpreter"""
         pass
 
+    def help_emptyline(self):
+        """Help output for the emptyline command"""
+        print("Executes nothing when no command is entered")
+        print()
+
     def do_EOF(self, arg):
         """EOF(end_of_file) command to exit the interpreter"""
         print()
         return True
 
+    def help_EOF(self):
+        """Help output for the EOF command"""
+        print("Exits the interpreter when Ctrl-D(EOF) is entered")
+        print()
+
     def do_quit(self, arg):
         """Quit command to exit the interpreter"""
         return True
+
+    def help_quit(self):
+        """Help output for the quit command"""
+        print("Exits the interpreter")
+        print()
 
     def do_create(self, arg):
         """
@@ -117,13 +133,13 @@ class HBNBCommand(cmd.Cmd):
     def help_show(self):
         """Help output for the show command"""
         print("Prints string representation of an instance\
-        based on class name and id")
+ based on class name and id")
         print()
 
     def do_all(self, arg):
         """
         Prints all string representation of all instances
-        based/not on the class name
+ based/not on the class name
         """
         line = arg.split()
         inst_list = []
@@ -143,7 +159,7 @@ class HBNBCommand(cmd.Cmd):
     def help_all(self):
         """Help output for the all command"""
         print("Prints all string representation of all instances\
-        based/not on the class name")
+ based/not on the class name")
         print()
 
     def do_destroy(self, arg):
@@ -174,7 +190,7 @@ class HBNBCommand(cmd.Cmd):
     def help_destroy(self):
         """Help output for the destroy command"""
         print("Deletes an instance based on the class name and id\
-        (save the change into the JSON file)")
+ (save the change into the JSON file)")
         print()
 
     def do_update(self, arg):
@@ -210,7 +226,7 @@ class HBNBCommand(cmd.Cmd):
     def help_update(self):
         """Help output for the update command"""
         print("Updates an instance based on the class name and id by\
-        adding or updating attribute (save the change into the JSON file)")
+ adding or updating attribute (save the change into the JSON file)")
         print()
 
     def do_count(self, arg):
