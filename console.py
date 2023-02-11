@@ -84,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
 
     def help_EOF(self):
         """Help output for the EOF command"""
-        print("Exits the interpreter when Ctrl-D(EOF) is entered")
+        print("Exits the program when Ctrl-D(EOF) is entered")
         print()
 
     def do_quit(self, arg):
@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
 
     def help_quit(self):
         """Help output for the quit command"""
-        print("Exits the interpreter")
+        print("Exits the program")
         print()
 
     def do_create(self, arg):
